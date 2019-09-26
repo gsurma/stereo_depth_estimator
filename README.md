@@ -10,13 +10,33 @@
 ## SGBM
 **Semi-global block matching** - SGBM, by Hirschmuller, H. (2008). Stereo processing by semiglobal matching and mutual information. IEEE Transactions on pattern analysis and machine intelligence, 30(2), 328-341.
 
-### Dataset 1
+### Usage
+
+`python3 stereo_depth_estimator_sgbm.py`
+
+
+Required directory structure:
+
+    .
+    ├── ...
+    ├── data                     
+    │    ├── 1 (can be modified with DATASET constant)
+    │        │──left (n left images)
+    │        │──right (n right images)
+    │        │──disparities (initially empty)
+    │        │──combined (initially empty)
+
+
+
+### Results
+
+#### Dataset 1
 ![](data/1/result.gif)
 
-### Dataset 2
+#### Dataset 2
 ![](data/2/result.gif)
 
-### Dataset 3
+#### Dataset 3
 ![](data/3/result.gif)
 
 

@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import PIL.Image as Image
 
 DPI=96
-DATASET = "data/3"
+DATASET = "data/1"
 DATASET_LEFT = DATASET+"/left/"
 DATASET_RIGHT = DATASET+"/right/"
 DATASET_DISPARITIES = DATASET+"/disparities/"
