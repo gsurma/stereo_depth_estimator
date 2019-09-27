@@ -14,9 +14,6 @@ DATASET_RIGHT = DATASET+"/right/"
 DATASET_DISPARITIES = DATASET+"/disparities/"
 DATASET_COMBINED = DATASET+"/combined/"
 
-DATASET_INPUTS = DATASET+"/inputs/"
-DATASET_OUTPUTS = DATASET+"/outputs/"
-
 def process_frame(left, right, name):
 	kernel_size = 3
 	smooth_left = cv2.GaussianBlur(left, (kernel_size,kernel_size), 1.5)
@@ -59,35 +56,6 @@ def process_frame(left, right, name):
 def create_combined_output(left, right, name):
 	combined = np.concatenate((left, right, cv2.imread(DATASET_DISPARITIES+name)), axis=0)
 	cv2.imwrite(DATASET_COMBINED+name, combined)
-
-def crop_square_from_center(image):
-	width, height = image.size
-	new_width = height
-	new_height = height
-	left = (width - new_width)/2
-	top = (height - new_height)/2
-	right = (width + new_width)/2
-	bottom = (height + new_height)/2
-	return image.crop((left, top, right, bottom))
-
-def divide_into_parts(image):
-	width, height = image.size
-	new_width = height
-	new_height = height
-
-	c_left = (width - new_width)/2
-	c_top = (height - new_height)/2
-	c_right = (width + new_width)/2
-	c_bottom = (height + new_height)/2
-	c = image.crop((c_left, c_top, c_right, c_bottom))
-
-	r_left = c_left+new_width
-	r_top = (height - new_height)/2
-	r_right = c_right+new_width
-	r_bottom = (height + new_height)/2
-	r = image.crop((r_left, r_top, r_right, r_bottom))
-
-	return c, r
 
 def process_dataset():
 	left_images = [f for f in os.listdir(DATASET_LEFT) if not f.startswith('.')]
